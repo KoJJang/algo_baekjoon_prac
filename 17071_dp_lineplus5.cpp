@@ -7,54 +7,76 @@
 //int main(){
 //    ios::sync_with_stdio(0);
 //    cin.tie(0);
-//    
+//
 //    int N , K;
-//    bool visit[500001] = {false,};
+//    bool visitE[500001] = {false,};
+//    bool visitO[500001] = {false,};
 //    cin >> N >> K;
-//    
+//
 //    int cnt = 0;
-////    queue<int> q;
 //    deque<int> q;
 //    q.push_back(N);
-//    visit[N] = true;
-//    int nxtC = 0;
-//    int curC = 1;
+//    visitE[N] = true;
+//    int nxtC = 0, curC = 1, isE = 1;
 //    while(1){
 //        if(K > 500000) {
 //            cout << -1 << endl;
 //            return 0;
 //        }
-//        if(visit[K]) {
+//
+//        if(isE == 1 && visitE[K]){
 //            cout << cnt << endl;
 //            return 0;
 //        }
-////        tmp_q = q;
-//        for(int i = 0 ; i < q.size(); i++){
-//            visit[q[i]] = false;
+//        if(isE == -1 && visitO[K]) {
+//            cout << cnt << endl;
+//            return 0;
 //        }
-////
-//        for(int i = 0 ; i < curC; i++){
-//            if(q.front() > 0 && !visit[q.front()-1]){
-//                visit[q.front()-1] = true;
-//                q.push_back(q.front()-1);
-//                nxtC++;
+//        if(isE == -1){
+//            for(int i = 0 ; i < curC; i++){
+//                if(q.front()*2 <= 500000 && !visitE[q.front()*2] ){
+//                    visitE[q.front()*2] = true;
+//                    q.push_back(q.front()*2);
+//                    nxtC++;
+//                }
+//                if(q.front() > 0 && !visitE[q.front()-1]){
+//                    visitE[q.front()-1] = true;
+//                    q.push_back(q.front()-1);
+//                    nxtC++;
+//                }
+//                if(q.front() < 500000 && !visitE[q.front()+1]) {
+//                    visitE[q.front()+1] = true;
+//                    q.push_back(q.front()+1);
+//                    nxtC++;
+//                }
+//                q.pop_front();
 //            }
-//            if(q.front() < 500000 && !visit[q.front()+1] ) {
-//                visit[q.front()+1] = true;
-//                q.push_back(q.front()+1);
-//                nxtC++;
+//        }
+//        else {
+//            for(int i = 0 ; i < curC; i++){
+//                if(q.front()*2 <= 500000 && !visitO[q.front()*2] ){
+//                    visitO[q.front()*2] = true;
+//                    q.push_back(q.front()*2);
+//                    nxtC++;
+//                }
+//                if(q.front() > 0 && !visitO[q.front()-1]){
+//                    visitO[q.front()-1] = true;
+//                    q.push_back(q.front()-1);
+//                    nxtC++;
+//                }
+//                if(q.front() < 500000 && !visitO[q.front()+1]) {
+//                    visitO[q.front()+1] = true;
+//                    q.push_back(q.front()+1);
+//                    nxtC++;
+//                }
+//                q.pop_front();
 //            }
-//            if(q.front()*2 <= 500000 && !visit[q.front()*2] ){
-//                visit[q.front()*2] = true;
-//                q.push_back(q.front()*2);
-//                nxtC++;
-//            }
-//            q.pop_front();
 //        }
 //        cnt ++;
 //        K += cnt;
 //        curC = nxtC;
 //        nxtC = 0;
+//        isE *= -1;
 //    }
 //}
-
+//
